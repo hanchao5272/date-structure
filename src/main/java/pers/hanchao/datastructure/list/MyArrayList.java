@@ -1,6 +1,8 @@
 package pers.hanchao.datastructure.list;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Objects;
 
 /**
  * <p>用数组实现列表</P>
@@ -19,7 +21,7 @@ import java.util.*;
  *
  * @author hanchao
  */
-public class MyArrayList<E> implements List<E> {
+public class MyArrayList<E> {
     /**
      * 用数组存储元素
      */
@@ -56,7 +58,6 @@ public class MyArrayList<E> implements List<E> {
      *
      * @return the number of elements in this list
      */
-    @Override
     public int size() {
         return this.size;
     }
@@ -66,7 +67,6 @@ public class MyArrayList<E> implements List<E> {
      *
      * @return <tt>true</tt> if this list contains no elements
      */
-    @Override
     public boolean isEmpty() {
         return this.size == 0;
     }
@@ -86,20 +86,9 @@ public class MyArrayList<E> implements List<E> {
      *                              list does not permit null elements
      *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      */
-    @Override
     public boolean contains(Object o) {
         //获取index
         return Objects.nonNull(get(indexOf(o)));
-    }
-
-    /**
-     * Returns an iterator over the elements in this list in proper sequence.
-     *
-     * @return an iterator over the elements in this list in proper sequence
-     */
-    @Override
-    public Iterator<E> iterator() {
-        return null;
     }
 
     /**
@@ -118,7 +107,6 @@ public class MyArrayList<E> implements List<E> {
      * sequence
      * @see Arrays#asList(Object[])
      */
-    @Override
     public Object[] toArray() {
         return Arrays.copyOf(elementDate, size);
     }
@@ -162,7 +150,6 @@ public class MyArrayList<E> implements List<E> {
      *                              this list
      * @throws NullPointerException if the specified array is null
      */
-    @Override
     public <T> T[] toArray(T[] a) {
         return (T[]) Arrays.copyOf(elementDate, size, a.getClass());
     }
@@ -189,7 +176,6 @@ public class MyArrayList<E> implements List<E> {
      * @throws IllegalArgumentException      if some property of this element
      *                                       prevents it from being added to this list
      */
-    @Override
     public boolean add(E e) {
         //扩容+1
         ensureCapacity(this.size + 1);
@@ -237,7 +223,6 @@ public class MyArrayList<E> implements List<E> {
      * @throws UnsupportedOperationException if the <tt>remove</tt> operation
      *                                       is not supported by this list
      */
-    @Override
     public boolean remove(Object o) {
         //1.获取元素位置
         int index = indexOf(o);
@@ -266,7 +251,6 @@ public class MyArrayList<E> implements List<E> {
      *                              or if the specified collection is null
      * @see #contains(Object)
      */
-    @Override
     public boolean containsAll(Collection<?> c) {
         return c.stream().allMatch(this::contains);
     }
@@ -292,7 +276,6 @@ public class MyArrayList<E> implements List<E> {
      *                                       specified collection prevents it from being added to this list
      * @see #add(Object)
      */
-    @Override
     public boolean addAll(Collection<? extends E> c) {
         //1.目标集合转为数组
         Object[] cArray = c.toArray();
@@ -332,7 +315,6 @@ public class MyArrayList<E> implements List<E> {
      * @throws IndexOutOfBoundsException     if the index is out of range
      *                                       (<tt>index &lt; 0 || index &gt; size()</tt>)
      */
-    @Override
     public boolean addAll(int index, Collection<? extends E> c) {
         //1.数组转换
         Object[] cArray = c.toArray();
@@ -369,7 +351,6 @@ public class MyArrayList<E> implements List<E> {
      * @see #remove(Object)
      * @see #contains(Object)
      */
-    @Override
     public boolean removeAll(Collection<?> c) {
         for (Object o : c) {
             remove(o);
@@ -397,7 +378,6 @@ public class MyArrayList<E> implements List<E> {
      * @see #remove(Object)
      * @see #contains(Object)
      */
-    @Override
     public boolean retainAll(Collection<?> c) {
         for (Object e : elementDate) {
             if (!c.contains(e)) {
@@ -414,7 +394,6 @@ public class MyArrayList<E> implements List<E> {
      * @throws UnsupportedOperationException if the <tt>clear</tt> operation
      *                                       is not supported by this list
      */
-    @Override
     public void clear() {
         //1.每个元素置为kong
         for (int i = 0; i < elementDate.length; i++) {
@@ -432,7 +411,6 @@ public class MyArrayList<E> implements List<E> {
      * @throws IndexOutOfBoundsException if the index is out of range
      *                                   (<tt>index &lt; 0 || index &gt;= size()</tt>)
      */
-    @Override
     public E get(int index) {
         //1.越界判断
         if (index >= size) {
@@ -460,7 +438,6 @@ public class MyArrayList<E> implements List<E> {
      * @throws IndexOutOfBoundsException     if the index is out of range
      *                                       (<tt>index &lt; 0 || index &gt;= size()</tt>)
      */
-    @Override
     public E set(int index, E element) {
         //1.越界判断
         if (index >= size) {
@@ -492,7 +469,6 @@ public class MyArrayList<E> implements List<E> {
      * @throws IndexOutOfBoundsException     if the index is out of range
      *                                       (<tt>index &lt; 0 || index &gt; size()</tt>)
      */
-    @Override
     public void add(int index, E element) {
         //1.index 不能超过size
         if (index >= size) {
@@ -521,7 +497,6 @@ public class MyArrayList<E> implements List<E> {
      * @throws IndexOutOfBoundsException     if the index is out of range
      *                                       (<tt>index &lt; 0 || index &gt;= size()</tt>)
      */
-    @Override
     public E remove(int index) {
         //1.获取当前元素
         E e = get(index);
@@ -552,7 +527,6 @@ public class MyArrayList<E> implements List<E> {
      *                              list does not permit null elements
      *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      */
-    @Override
     public int indexOf(Object o) {
         //1.定义index
         int index = -1;
@@ -593,7 +567,6 @@ public class MyArrayList<E> implements List<E> {
      *                              list does not permit null elements
      *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      */
-    @Override
     public int lastIndexOf(Object o) {
         //1.定义index
         int index = -1;
@@ -615,76 +588,5 @@ public class MyArrayList<E> implements List<E> {
         }
 
         return index;
-    }
-
-    /**
-     * Returns a list iterator over the elements in this list (in proper
-     * sequence).
-     *
-     * @return a list iterator over the elements in this list (in proper
-     * sequence)
-     */
-    @Override
-    public ListIterator<E> listIterator() {
-        return null;
-    }
-
-    /**
-     * Returns a list iterator over the elements in this list (in proper
-     * sequence), starting at the specified position in the list.
-     * The specified index indicates the first element that would be
-     * returned by an initial call to {@link ListIterator#next next}.
-     * An initial call to {@link ListIterator#previous previous} would
-     * return the element with the specified index minus one.
-     *
-     * @param index index of the first element to be returned from the
-     *              list iterator (by a call to {@link ListIterator#next next})
-     * @return a list iterator over the elements in this list (in proper
-     * sequence), starting at the specified position in the list
-     * @throws IndexOutOfBoundsException if the index is out of range
-     *                                   ({@code index < 0 || index > size()})
-     */
-    @Override
-    public ListIterator<E> listIterator(int index) {
-        return null;
-    }
-
-    /**
-     * Returns a view of the portion of this list between the specified
-     * <tt>fromIndex</tt>, inclusive, and <tt>toIndex</tt>, exclusive.  (If
-     * <tt>fromIndex</tt> and <tt>toIndex</tt> are equal, the returned list is
-     * empty.)  The returned list is backed by this list, so non-structural
-     * changes in the returned list are reflected in this list, and vice-versa.
-     * The returned list supports all of the optional list operations supported
-     * by this list.<p>
-     * <p>
-     * This method eliminates the need for explicit range operations (of
-     * the sort that commonly exist for arrays).  Any operation that expects
-     * a list can be used as a range operation by passing a subList view
-     * instead of a whole list.  For example, the following idiom
-     * removes a range of elements from a list:
-     * <pre>{@code
-     *      list.subList(from, to).clear();
-     * }</pre>
-     * Similar idioms may be constructed for <tt>indexOf</tt> and
-     * <tt>lastIndexOf</tt>, and all of the algorithms in the
-     * <tt>Collections</tt> class can be applied to a subList.<p>
-     * <p>
-     * The semantics of the list returned by this method become undefined if
-     * the backing list (i.e., this list) is <i>structurally modified</i> in
-     * any way other than via the returned list.  (Structural modifications are
-     * those that change the size of this list, or otherwise perturb it in such
-     * a fashion that iterations in progress may yield incorrect results.)
-     *
-     * @param fromIndex low endpoint (inclusive) of the subList
-     * @param toIndex   high endpoint (exclusive) of the subList
-     * @return a view of the specified range within this list
-     * @throws IndexOutOfBoundsException for an illegal endpoint index value
-     *                                   (<tt>fromIndex &lt; 0 || toIndex &gt; size ||
-     *                                   fromIndex &gt; toIndex</tt>)
-     */
-    @Override
-    public List<E> subList(int fromIndex, int toIndex) {
-        return null;
     }
 }
