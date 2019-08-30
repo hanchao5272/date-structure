@@ -504,7 +504,7 @@ public class MyArrayList<E> {
         //2.数组拷贝
         System.arraycopy(elementDate, index + 1, elementDate, index, size - index - 1);
         //3.末尾元素置空
-        elementDate[size] = null;
+        elementDate[size - 1] = null;
         //4.size--
         size--;
         //返回当前元素
