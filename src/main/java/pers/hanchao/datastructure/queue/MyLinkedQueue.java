@@ -1,35 +1,35 @@
 package pers.hanchao.datastructure.queue;
 
-import pers.hanchao.datastructure.list.MyArrayList;
+import pers.hanchao.datastructure.list.MyLinkedList;
 
 import java.util.NoSuchElementException;
 
 /**
- * <p>由数组自定义队列LIFO，先进后出</P>
- * 1.队列相当于一个倒立的数组，队列头相当于ArrayList的尾部，队列尾相当于ArrayList的头部。
- * 2.add(e):带异常的入队，相当于ArrayList在尾部添加元素，= MyArrayList.add(e)
- * 3.remove():带异常的出队，相当于ArrayList在头部删除元素，= MyArrayList.remove(0)
- * 4.element():带异常的获取队头元素，相当于查询ArrayList的尾部元素，= MyArrayList.get(size-1)
- * 5.offer(e):不带异常的入队，相当于ArrayList在尾部添加元素，= MyArrayList.add(e)
- * 6.poll():不带异常的出队，相当于ArrayList在头部删除元素，= MyArrayList.remove(0)
- * 7.peek():不带异常的获取队头元素，相当于查询ArrayList的尾部元素，= MyArrayList.get(size-1)
+ * <p>由链表自定义队列LIFO，先进后出</P>
+ * 1.队列相当于一个正立的链表，队列头相当于LinkedList的头节点，队列尾相当于LinkedList的尾节点。
+ * 2.add(e):带异常的入队，相当于LinkedList在头节点添加元素，= MyLinkedList.addFirst(e)
+ * 3.remove():带异常的出队，相当于LinkedList在尾节点删除元素，= MyLinkedList.removeLast(size-1)
+ * 4.element():带异常的获取队头元素，相当于查询LinkedList的头节点元素，= MyLinkedList.getFirst(size-1)
+ * 5.offer(e):不带异常的入队，相当于LinkedList在头节点添加元素，= MyLinkedList.offerFirst(e)
+ * 6.poll():不带异常的出队，相当于LinkedList在尾节点删除元素，= MyLinkedList.pollLast(size-1)
+ * 7.peek():不带异常的获取队头元素，相当于查询LinkedList的头节点元素，= MyLinkedList.peekFirst(size-1)
  *
  * @author hanchao
  */
-public class MyArrayQueue<E> {
+public class MyLinkedQueue<E> {
     /**
-     * 数组
+     * 列表实现Queue
      */
-    private MyArrayList<E> myArrayList;
+    private MyLinkedList<E> myLinkedList;
 
     /**
      * 容量有限制
      */
     private int capacity;
 
-    public MyArrayQueue(int capacity) {
+    public MyLinkedQueue(int capacity) {
         this.capacity = capacity;
-        myArrayList = new MyArrayList<>(capacity);
+        myLinkedList = new MyLinkedList<>();
     }
 
     /**
@@ -49,11 +49,11 @@ public class MyArrayQueue<E> {
      *                                  prevents it from being added to this queue
      */
     public boolean add(E o) {
-        //入队=ArrayList尾部插入
-        if (myArrayList.size() == capacity) {
+        //入队=LinkedList头节点插入
+        if (myLinkedList.size() == capacity) {
             throw new IllegalStateException("队列已满");
         }
-        myArrayList.add(o);
+        myLinkedList.addFirst(o);
         return true;
     }
 
@@ -75,11 +75,11 @@ public class MyArrayQueue<E> {
      *                                  prevents it from being added to this queue
      */
     public boolean offer(E o) {
-        //入队=ArrayList尾部插入
-        if (myArrayList.size() == capacity) {
+        //入队=LinkedList头节点插入
+        if (myLinkedList.size() == capacity) {
             return false;
         }
-        myArrayList.add(o);
+        myLinkedList.offerFirst(o);
         return true;
     }
 
@@ -92,13 +92,11 @@ public class MyArrayQueue<E> {
      * @throws NoSuchElementException if this queue is empty
      */
     public Object remove() {
-        //出队=ArrayList头部删除
-        if (myArrayList.isEmpty()) {
+        //出队=LinkedList尾结点删除
+        if (myLinkedList.size() == 0) {
             throw new NoSuchElementException();
         }
-        E e = myArrayList.get(0);
-        myArrayList.remove(0);
-        return e;
+        return myLinkedList.removeLast();
     }
 
     /**
@@ -108,13 +106,11 @@ public class MyArrayQueue<E> {
      * @return the head of this queue, or {@code null} if this queue is empty
      */
     public Object poll() {
-        //出队=ArrayList头部删除
-        if (myArrayList.isEmpty()) {
+        //出队=LinkedList尾结点删除
+        if (myLinkedList.size() == 0) {
             return null;
         }
-        E e = myArrayList.get(0);
-        myArrayList.remove(0);
-        return e;
+        return myLinkedList.pollLast();
     }
 
     /**
@@ -126,11 +122,11 @@ public class MyArrayQueue<E> {
      * @throws NoSuchElementException if this queue is empty
      */
     public Object element() {
-        //查询队头=ArrayList尾部元素
-        if (myArrayList.isEmpty()) {
+        //查询队头=LinkedList头节点元素
+        if (myLinkedList.size() == 0) {
             throw new NoSuchElementException();
         }
-        return myArrayList.get(myArrayList.size() - 1);
+        return myLinkedList.element();
     }
 
     /**
@@ -140,24 +136,24 @@ public class MyArrayQueue<E> {
      * @return the head of this queue, or {@code null} if this queue is empty
      */
     public Object peek() {
-        //查询队头=ArrayList尾部元素
-        if (myArrayList.isEmpty()) {
+        //查询队头=LinkedList头节点元素
+        if (myLinkedList.size() == 0) {
             return null;
         }
-        return myArrayList.get(myArrayList.size() - 1);
+        return myLinkedList.peek();
     }
 
     public static void main(String[] args) {
-        MyArrayQueue myArrayQueue = new MyArrayQueue(5);
-        myArrayQueue.offer(1);
-        System.out.println(myArrayQueue.peek());
-        myArrayQueue.offer(2);
-        System.out.println(myArrayQueue.peek());
-        myArrayQueue.offer(3);
-        System.out.println(myArrayQueue.peek());
+        MyLinkedQueue myLinkedQueue = new MyLinkedQueue(5);
+        myLinkedQueue.offer(1);
+        System.out.println(myLinkedQueue.peek());
+        myLinkedQueue.offer(2);
+        System.out.println(myLinkedQueue.peek());
+        myLinkedQueue.offer(3);
+        System.out.println(myLinkedQueue.peek());
 
-        System.out.println(myArrayQueue.poll());
-        System.out.println(myArrayQueue.poll());
-        System.out.println(myArrayQueue.poll());
+        System.out.println(myLinkedQueue.poll());
+        System.out.println(myLinkedQueue.poll());
+        System.out.println(myLinkedQueue.poll());
     }
 }

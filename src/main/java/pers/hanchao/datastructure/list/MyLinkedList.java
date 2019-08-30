@@ -186,15 +186,17 @@ public class MyLinkedList<E> {
     public void addFirst(E e) {
         if (first == null) {
             last = first = new Node<>(e, null, null);
+            size++;
+        }else {
+            //1.原头结点
+            Node<E> oldFirst = first;
+            //2.新头结点
+            first = new Node<>(e, null, first);
+            //3.旧头结点处理
+            oldFirst.prev = first;
+            //4.size ++
+            size++;
         }
-        //1.原头结点
-        Node<E> oldFirst = first;
-        //2.新头结点
-        first = new Node<>(e, null, first);
-        //3.旧头结点处理
-        oldFirst.prev = first;
-        //4.size ++
-        size++;
     }
 
     /**
@@ -207,15 +209,17 @@ public class MyLinkedList<E> {
     public void addLast(E e) {
         if (last == null) {
             last = first = new Node<>(e, null, null);
+            size++;
+        }else {
+            //1.原尾结点
+            Node<E> oldLast = last;
+            //2.新尾结点
+            last = new Node<>(e, oldLast, null);
+            //3.旧尾结点处理
+            oldLast.next = last;
+            //4.size++
+            size++;
         }
-        //1.原尾结点
-        Node<E> oldLast = last;
-        //2.新尾结点
-        last = new Node<>(e, oldLast, null);
-        //3.旧尾结点处理
-        oldLast.next = last;
-        //4.size++
-        size++;
     }
 
     /**
@@ -678,9 +682,7 @@ public class MyLinkedList<E> {
      * @since 1.6
      */
     public E pollLast() {
-        E last = peekLast();
-        unlinkLast();
-        return last;
+        return unlinkLast();
     }
 
     /**
