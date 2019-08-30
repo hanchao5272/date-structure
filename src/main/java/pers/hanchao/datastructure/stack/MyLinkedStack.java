@@ -1,32 +1,32 @@
 package pers.hanchao.datastructure.stack;
 
-import pers.hanchao.datastructure.list.MyArrayList;
+import pers.hanchao.datastructure.list.MyLinkedList;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
-import java.util.Vector;
 
 /**
- * <p>用数组实现栈</P>
- * 1.栈 相当于 一个倒立的ArrayList，栈顶=ArrayList尾部，栈底=ArrayList头部。
- * 2.push(e):栈顶插入元素，相当于在ArrayList尾部加入元素，= MyArrayList.add(e)。
- * 3.pop():栈顶弹出元素，相当于在ArrayList尾部删除元素，= MyArrayList.remove(size - 1)。
- * 4.peek():栈顶查询元素，相对与在ArrayList尾部获取元素，= MyArrayList.get(0);
- * 5.search(e):获取在栈顶(index=1)开始出现的第一个e元素，相当于从ArrayList尾部开始获取元素，= size - MyArrayList.lastIndexOf(e);
+ * <p>用链表实现栈</P>
+ * 1.栈 相当于 一个正立的LinkedList，栈顶=List头节点，栈底=List尾结点。
+ * 2.push(e):栈顶插入元素，相当于在LinkedList头结点加入元素，= MyLinkedList.push(e)。
+ * 3.pop():栈顶弹出元素，相当于在List头结点删除元素，= MyLinkedList.pop()。
+ * 4.peek():栈顶查询元素，相对与在List头结点获取元素，= MyLinkedList.peekFirst();
+ * 5.search(e):获取在栈顶(index=1)开始出现的第一个e元素，相当于从LinkedList头结点开始获取元素，= 1 - MyLinkedList.indexOf(e);
  *
  * @author hanchao
  */
-public class MyArrayStack<E> {
+public class MyLinkedStack<E> {
+
     /**
-     * 通过数组实现栈
+     * 用链表实现栈
      */
-    private MyArrayList<E> elementList;
+    private MyLinkedList<E> elementList;
 
     /**
      * Creates an empty Stack.
      */
-    public MyArrayStack() {
-        elementList = new MyArrayList<>();
+    public MyLinkedStack() {
+        elementList = new MyLinkedList<>();
     }
 
     /**
@@ -37,11 +37,9 @@ public class MyArrayStack<E> {
      *
      * @param item the item to be pushed onto this stack.
      * @return the <code>item</code> argument.
-     * @see Vector#addElement
      */
     public Object push(E item) {
-        //入栈：在list尾部插入元素
-        elementList.add(item);
+        elementList.push(item);
         return item;
     }
 
@@ -53,12 +51,12 @@ public class MyArrayStack<E> {
      * of the <tt>Vector</tt> object).
      * @throws EmptyStackException if this stack is empty.
      */
+
     public synchronized Object pop() {
-        //出栈：去除list尾部元素
-        if (elementList.isEmpty()) {
+        if (elementList.size() == 0) {
             throw new EmptyStackException();
         }
-        return elementList.remove(elementList.size() - 1);
+        return elementList.pop();
     }
 
     /**
@@ -70,11 +68,11 @@ public class MyArrayStack<E> {
      * @throws EmptyStackException if this stack is empty.
      */
     public synchronized Object peek() {
-        //偷看：获取list尾部元素
-        if (elementList.isEmpty()) {
+        //获取栈顶元素：链表头结点取值
+        if (elementList.size() == 0) {
             throw new EmptyStackException();
         }
-        return elementList.get(elementList.size() - 1);
+        return elementList.peekFirst();
     }
 
     /**
@@ -84,7 +82,7 @@ public class MyArrayStack<E> {
      * no items; <code>false</code> otherwise.
      */
     public boolean empty() {
-        return elementList.isEmpty();
+        return elementList.size() == 0;
     }
 
     /**
@@ -112,11 +110,11 @@ public class MyArrayStack<E> {
      */
     public synchronized int search(E o) {
         //从栈顶（index=1）开始搜索，返回第一个元素所在位置
-        int lastIndexOf = elementList.lastIndexOf(o);
-        if (lastIndexOf == -1) {
+        int indexOf = elementList.indexOf(o);
+        if (-1 == indexOf) {
             return -1;
         }
-        return elementList.size() - lastIndexOf;
+        return 1 + indexOf;
     }
 
     public static void main(String[] args) {
@@ -124,21 +122,21 @@ public class MyArrayStack<E> {
         stack.push("A");
         stack.push("B");
         stack.push("C");
-        MyArrayStack myArrayStack = new MyArrayStack();
-        myArrayStack.push("A");
-        myArrayStack.push("B");
-        myArrayStack.push("C");
+        MyLinkedStack myLinkedStack = new MyLinkedStack();
+        myLinkedStack.push("A");
+        myLinkedStack.push("B");
+        myLinkedStack.push("C");
 
         System.out.println(stack.peek());
-        System.out.println(myArrayStack.peek());
+        System.out.println(myLinkedStack.peek());
 
         System.out.println(stack.search("C"));
-        System.out.println(myArrayStack.search("C"));
+        System.out.println(myLinkedStack.search("C"));
 
         System.out.println(stack.size());
-        System.out.println(myArrayStack.size());
+        System.out.println(myLinkedStack.size());
 
         System.out.println(stack.pop());
-        System.out.println(myArrayStack.pop());
+        System.out.println(myLinkedStack.pop());
     }
 }

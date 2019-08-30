@@ -503,17 +503,17 @@ public class MyLinkedList<E> {
         int index = -1;
         if (o == null) {
             for (Node<E> node = first; node != null; node = node.next) {
+                index++;
                 if (null == node.data) {
                     break;
                 }
-                index++;
             }
         } else {
             for (Node<E> node = first; node != null; node = node.next) {
+                index++;
                 if (o.equals(node.data)) {
                     break;
                 }
-                index++;
             }
         }
 
@@ -535,17 +535,17 @@ public class MyLinkedList<E> {
         int index = -1;
         if (null == o) {
             for (Node<E> node = last; node != null; node = last.prev) {
+                index++;
                 if (node.data == null) {
                     break;
                 }
-                index++;
             }
         } else {
             for (Node<E> node = last; node != null; node = last.prev) {
+                index++;
                 if (o.equals(node.data)) {
                     break;
                 }
-                index++;
             }
         }
         return index;
