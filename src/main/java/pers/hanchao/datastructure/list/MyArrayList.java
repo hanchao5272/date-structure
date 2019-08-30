@@ -18,6 +18,7 @@ import java.util.Objects;
  * 10.clear(): for{elementData[i] = null}; size=0；复杂度O(n)
  * 11.Object[] Arrays.copyOf(srcArray, copyLength); 返回一个拷贝自srcArray数组的长度为copyLength的数组
  * 12.System.arraycopy(srcArray, srcArrayStartIndex, toArray, toArrayStartIndex, srcCopyLength); 从srcArray的第srcArrayStartIndex开始，拷贝至toArray数组的toArrayStartIndex，共计拷贝srcCopyLength个元素
+ * 13.移除的元素置为null，有利于GC
  *
  * @author hanchao
  */
