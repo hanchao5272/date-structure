@@ -22,7 +22,7 @@ import java.util.*;
  * 16.peek()=peekFirst(),peekLast():适用于队列；peek=偷看,所以不删元素；获取首、尾元素，不删除，不存在返回null；复杂度O(1)
  * 17.offer()=offerFirst(),offerLast():适用于队列；offer=献上；在首尾添加元素；复杂度O(1)
  * 18.poll()=pollFirst(),pollLast:使用与队列；poll=获得，所以删元素；获取首尾元素，删除，不存在返回null；复杂度O(1)
- * 19.push(e),pop(e):适用于栈；在尾结点插入节点、在头节点推出元素，相当于addFirst(e)和removeLast(e)，不存在则抛出NoSuchElementException；复杂度O(1)；
+ * 19.push(e),pop(e):适用于栈；在头节点入栈出栈元素，相当于addFirst(e)和removeFirst(e)，不存在则抛出NoSuchElementException；复杂度O(1)；
  * 20.element()：获取头节点元素，不删除，不存在则抛出NoSuchElementException；复杂度O(1)；
  * 21.remove(): 删除头节点，不存在则抛出NoSuchElementException；复杂度O(1)；
  *
@@ -708,7 +708,7 @@ public class MyLinkedList<E> {
      * @since 1.6
      */
     public E pop() {
-        return removeLast();
+        return removeFirst();
     }
 
     /**
