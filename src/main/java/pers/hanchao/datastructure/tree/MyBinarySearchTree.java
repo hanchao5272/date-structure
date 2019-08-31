@@ -5,6 +5,7 @@ package pers.hanchao.datastructure.tree;
  * 1.contains(e)、find(e)、findMin(e)、findMax(e)：while实现二分查找；复杂度log2N
  * 2.前序 root-left-right, 中序 left-root-right ，后续 left-right-root：递归实现；时间复杂度O(n)
  * 3.常常定义父节点用于回溯
+ * 4.删除采用惰性删除，标志位delete.
  * @author hanchao
  */
 public class MyBinarySearchTree<E extends Comparable> {
@@ -15,28 +16,24 @@ public class MyBinarySearchTree<E extends Comparable> {
         E data;
         Node<E> left;
         Node<E> right;
+        boolean delete;
 
         public Node(E data) {
             this.data = data;
+            this.delete = false;
         }
 
         public Node(E data, Node<E> left, Node<E> right) {
             this.data = data;
             this.left = left;
             this.right = right;
-        }
-
-        @Override
-        public String toString() {
-            return "Node{" +
-                    "data=" + data +
-                    ", left=" + left +
-                    ", right=" + right +
-                    '}';
+            this.delete = false;
         }
 
         public void printNode(){
-            System.out.print(" --> " + data);
+            if (!delete){
+                System.out.print(" --> " + data);
+            }
         }
     }
 
@@ -211,7 +208,10 @@ public class MyBinarySearchTree<E extends Comparable> {
      * 删除一个节点(懒惰删除)
      */
     public void remove(E e) {
-
+        Node<E> node = find(e);
+        if (node != null){
+            node.delete = true;
+        }
     }
 
     public static void main(String[] args) {
@@ -233,5 +233,13 @@ public class MyBinarySearchTree<E extends Comparable> {
         tree.printTreeByPreOrder();
         tree.printTreeByInOrder();
         tree.printTreeByPostOrder();
+
+        tree.remove(4);
+        tree.remove(6);
+
+        tree.printTreeByPreOrder();
+        tree.printTreeByInOrder();
+        tree.printTreeByPostOrder();
+
     }
 }
