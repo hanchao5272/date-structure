@@ -134,7 +134,7 @@ public class MyBinarySearchTree<E extends Comparable> {
                     parent = node;
                     //大于当前节点，继续找右子树
                     node = node.right;
-                    //如果有子树为空，则将右子树置为新节点
+                    //如果右子树为空，则将右子树置为新节点
                     if (node == null){
                         parent.right = new Node<>(e);
                     }
