@@ -24,6 +24,7 @@ public class BubbleSorter implements Sortable {
      */
     @Override
     public <E extends Comparable> E[] sort(E[] array) {
+        System.out.println();
         if (array != null && array.length > 0) {
             E temp;
             //每轮冒泡将待排序数组中最大的元素交换至已排序数组
@@ -61,15 +62,4 @@ public class BubbleSorter implements Sortable {
         }
         return array;
     }
-
-    public static void main(String[] args) {
-        Integer[] array = new Integer[]{3, 5, 2, 4, 7, 9, 8, 6, 1};
-        new BubbleSorter().sort(array);
-        System.out.println();
-
-        array = new Integer[]{1, 2, 3, 6, 4, 7, 9, 8, 5};
-        new BubbleSorter().sort(array);
-        System.out.println();
-    }
-
 }
