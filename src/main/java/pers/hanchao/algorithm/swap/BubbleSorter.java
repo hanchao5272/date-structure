@@ -1,11 +1,13 @@
 package pers.hanchao.algorithm.swap;
 
+import pers.hanchao.algorithm.Sortable;
+
 /**
  * <p>bubble sort</P>
  *
  * @author hanchao
  */
-public class BubbleSorter {
+public class BubbleSorter implements Sortable {
 
     /**
      * 冒泡排序：
@@ -20,7 +22,8 @@ public class BubbleSorter {
      * - 时间：O(n) - O(n2) - O(n2)
      * - 空间：O(1)
      */
-    public static <E extends Comparable> E[] sort(E[] array) {
+    @Override
+    public <E extends Comparable> E[] sort(E[] array) {
         if (array != null && array.length > 0) {
             E temp;
             //每轮冒泡将待排序数组中最大的元素交换至已排序数组
@@ -61,11 +64,11 @@ public class BubbleSorter {
 
     public static void main(String[] args) {
         Integer[] array = new Integer[]{3, 5, 2, 4, 7, 9, 8, 6, 1};
-        BubbleSorter.sort(array);
+        new BubbleSorter().sort(array);
         System.out.println();
 
         array = new Integer[]{1, 2, 3, 6, 4, 7, 9, 8, 5};
-        BubbleSorter.sort(array);
+        new BubbleSorter().sort(array);
         System.out.println();
     }
 
