@@ -15,6 +15,10 @@ public class BubbleSorter {
      * 优化：
      * 1.每次冒泡，无需比较已排序元素
      * 2.可设置标志位记录每次冒泡过程中是否进行过交换，如果没有，则表示数组已经排序完成，无需继续冒泡。
+     *
+     * 复杂度：
+     * - 时间：O(n) - O(n2) - O(n2)
+     * - 空间：O(1)
      */
     public static <E extends Comparable> E[] sort(E[] array) {
         if (array != null && array.length > 0) {
