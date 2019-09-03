@@ -1,5 +1,6 @@
 package pers.hanchao.algorithm;
 
+import pers.hanchao.algorithm.insert.DirectInsert;
 import pers.hanchao.algorithm.select.SimpleSelect;
 import pers.hanchao.algorithm.swap.BubbleSorter;
 
@@ -20,6 +21,10 @@ public class SortDemo {
         //2.simple select
         new SimpleSelect().sort(array1);
         new SimpleSelect().sort(array2);
+
+        //3.direct insert
+        new DirectInsert().sort(array1);
+        new DirectInsert().sort(array2);
 
     }
 }
