@@ -89,6 +89,8 @@ public class MyHeap<E extends Comparable> {
                 elements[index] = elements[fIndex];
                 elements[fIndex] = e;
                 index = fIndex;
+            }else {
+                break;
             }
         }
 
@@ -113,9 +115,16 @@ public class MyHeap<E extends Comparable> {
         elements[size - 1] = null;
         //3.下沉(交换)此节点至合适位置，
         int index = 0;
-        while(index * 2 + 2 < size - 1){
+        while(index * 2 + 1 < size - 1){
             int lIndex = index * 2 + 1;
-            int rIndex = index * 2 + 2;
+            int rIndex;
+            //有可能没有又孩子,此时为了统一逻辑，让右孩子等于左孩子
+            if (index * 2 + 2 == size -1){
+                rIndex = lIndex;
+            }else {
+                 rIndex = index * 2 + 2;
+            }
+
             int cIndex = rIndex;
             //先找出最大的孩子
             if (comparator.compare(elements[lIndex],elements[rIndex]) > 0 ){
@@ -164,6 +173,22 @@ public class MyHeap<E extends Comparable> {
         System.out.println("=======");
 
         for (int i = 0; i < 10; i++) {
+            maxHeap.poll();
+            maxHeap.printAll();
+            System.out.println("max=" + maxHeap.peek());
+        }
+
+        maxHeap = new MyHeap<>(9, Comparators.comparable());
+
+        //
+        Integer[] array1 = new Integer[]{3, 5, 2, 4, 7, 9, 8, 6, 1};
+        for (Integer e : array1) {
+            maxHeap.offer(e);
+            maxHeap.printAll();
+            System.out.println("max=" + maxHeap.peek());
+        }
+
+        for (int i = 0; i < array1.length; i++) {
             maxHeap.poll();
             maxHeap.printAll();
             System.out.println("max=" + maxHeap.peek());

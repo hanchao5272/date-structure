@@ -6,5 +6,5 @@ package pers.hanchao.algorithm;
  * @author hanchao
  */
 public interface Sortable {
-    <E extends Comparable> E[] sort(E[] a);
+    <E extends Comparable> E[] sort(E[] array);
 }
