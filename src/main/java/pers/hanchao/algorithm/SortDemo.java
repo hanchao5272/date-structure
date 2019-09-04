@@ -1,6 +1,7 @@
 package pers.hanchao.algorithm;
 
 import pers.hanchao.algorithm.insert.DirectInsert;
+import pers.hanchao.algorithm.merge.MergeSort;
 import pers.hanchao.algorithm.select.HeapSort;
 import pers.hanchao.algorithm.select.SimpleSelect;
 import pers.hanchao.algorithm.swap.BubbleSorter;
@@ -42,6 +43,9 @@ public class SortDemo {
         new DirectInsert().sort(array2);
         new DirectInsert().sort(array3);
 
-        //4.
+        //4.merge
+        new MergeSort().sort(array1);
+        new MergeSort().sort(array2);
+        new MergeSort().sort(array3);
     }
 }

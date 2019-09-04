@@ -51,6 +51,10 @@ public class QuickSort implements Sortable {
         quickSort(a, mid + 1, end);
 
         //打印信息for测试
+        printForTest(a, start, end, mid);
+    }
+
+    private <E extends Comparable> void printForTest(E[] a, int start, int end, int mid) {
         System.out.print("某次快速分治： [ ");
         for (int i = start; i < mid; i++) {
             System.out.print(a[i] + " ");
