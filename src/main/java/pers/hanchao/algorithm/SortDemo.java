@@ -4,6 +4,7 @@ import pers.hanchao.algorithm.insert.DirectInsert;
 import pers.hanchao.algorithm.select.HeapSort;
 import pers.hanchao.algorithm.select.SimpleSelect;
 import pers.hanchao.algorithm.swap.BubbleSorter;
+import pers.hanchao.algorithm.swap.QuickSort;
 
 /**
  * <p></P>
@@ -20,6 +21,11 @@ public class SortDemo {
         new BubbleSorter().sort(array1);
         new BubbleSorter().sort(array2);
         new BubbleSorter().sort(array3);
+
+        //12.swap - quick sort
+        new QuickSort().sort(array1);
+        new QuickSort().sort(array2);
+        new QuickSort().sort(array3);
 
         //21.select - simple select
         new SimpleSelect().sort(array1);
