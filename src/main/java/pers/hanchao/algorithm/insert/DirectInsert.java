@@ -16,7 +16,7 @@ public class DirectInsert implements Sortable {
      * 2.每次直接插入就是：从待排序元素中拿出index最小的元素，然后根据大小关系插入到已排序数组的合适位置
      *
      * 复杂度
-     * - 时间 O(n2) O(n2) O(n2)
+     * - 时间 O(n) O(n2) O(n2)
      * - 空间 O(1)
      */
     @Override

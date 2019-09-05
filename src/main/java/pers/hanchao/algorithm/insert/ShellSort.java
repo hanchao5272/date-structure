@@ -17,8 +17,8 @@ public class ShellSort implements Sortable {
      * 3.从最大增量开始逐渐递减，执行多次插入排序，每次排序对象为间隔为增量的元素。
      * <p>
      * 复杂度
-     * - 时间：
-     * - 空间：
+     * - 时间：O(n) O(n1.3) O(n2)
+     * - 空间：O(1)
      */
     @Override
     public <E extends Comparable> E[] sort(E[] array) {
@@ -58,28 +58,31 @@ public class ShellSort implements Sortable {
 
     /**
      * 对数组a[i],a[i+h],a[i+2h]进行插入排序
-     * 从待排序数组中，选择最小的元素放入已排序数组
+     * 从待排序数组中，拿出第一个的元素，插入到已排序数组的合适位置
      */
     private <E extends Comparable> void directInsert(E[] a, int start, int h, int size) {
         //start start+h start+2h
-        for (int i = start; i < size; i = i + h) {
-            //定义最小元素
-            int minIndex = i;
-            E min = a[i];
+        //start元素无需处理，从start+h开始处理
+        for (int i = start + h; i < size; i = i + h) {
+            //当前需要插入的元素为index=i
+            E current = a[i];
 
-            //获取最小元素
-            for (int j = i; j < size; j = j + h) {
-                if (min.compareTo(a[j]) < 0) {
-                    min = a[j];
-                    minIndex = j;
+            //从a[start],a[start+h]..a[i]中，查询已排序元素中的合适位置
+            int insertIndex = i;
+            for (int j = start; j < i; j = j + h) {
+                if (current.compareTo(a[j]) > 0) {
+                    insertIndex = j;
+                    break;
                 }
             }
 
-            //将最小元素替换至已排序数组
-            if (minIndex != i) {
-                E temp = a[minIndex];
-                a[minIndex] = a[i];
-                a[i] = temp;
+            //将最小元素插入至insertIndex
+            if (insertIndex != i) {
+                //将a[min]..a[i]之后的元素右移
+                for (int j = i; j -h >=insertIndex; j = j-h) {
+                    a[j] = a[j-h];
+                }
+                a[insertIndex] = current;
             }
         }
     }
