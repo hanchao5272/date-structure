@@ -28,7 +28,7 @@ public class HeapSort implements Sortable {
      * - 空间：O(1)
      */
     @Override
-    public <E extends Comparable> E[] sort(E[] array) {
+    public <E extends Number & Comparable> E[] sort(E[] array) {
         E[] a = SortUtil.copyArrayForTest(array);
         System.out.println();
 

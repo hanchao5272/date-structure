@@ -24,7 +24,7 @@ public class BubbleSorter implements Sortable {
      * - 空间：O(1)
      */
     @Override
-    public <E extends Comparable> E[] sort(E[] array) {
+    public <E extends Number & Comparable> E[] sort(E[] array) {
         E[] a = SortUtil.copyArrayForTest(array);
         System.out.println();
         if (a != null && a.length > 0) {
@@ -57,7 +57,7 @@ public class BubbleSorter implements Sortable {
         return a;
     }
 
-    private <E extends Comparable> void showForTest(E[] a, int i) {
+    private <E extends Number & Comparable> void showForTest(E[] a, int i) {
         System.out.print("第" + (i + 1) + "次冒泡之后：");
         System.out.print("待排序元素 ");
         for (int k = 0; k < a.length - i - 1; k++) {

@@ -20,7 +20,7 @@ public class MergeSort implements Sortable {
      * - 空间：O(n)
      */
     @Override
-    public <E extends Comparable> E[] sort(E[] array) {
+    public <E extends Number & Comparable> E[] sort(E[] array) {
         E[] a = SortUtil.copyArrayForTest(array);
         System.out.println();
 
@@ -32,7 +32,7 @@ public class MergeSort implements Sortable {
     /**
      * mid的选取：mid = start + (end - start) / 2 = (start + end) / 2
      */
-    public <E extends Comparable> void mergeSort(E[] a, int start, int end) {
+    public <E extends Number & Comparable> void mergeSort(E[] a, int start, int end) {
         //终止递归
         if (end == start) {
             return;
@@ -49,7 +49,7 @@ public class MergeSort implements Sortable {
         //打印信息for测试
         printForTest(a, start, end, mid);
     }
-    private <E extends Comparable> void printForTest(E[] a, int start, int end, int mid) {
+    private <E extends Number & Comparable> void printForTest(E[] a, int start, int end, int mid) {
         System.out.print("某次归并： [ ");
         for (int i = start; i <= mid; i++) {
             System.out.print(a[i] + " ");
@@ -65,9 +65,9 @@ public class MergeSort implements Sortable {
      * a[start]~a[mid]
      * a[mid+1]~a[end]
      */
-    private <E extends Comparable> void merge(E[] a, int start, int mid, int end) {
+    private <E extends Number & Comparable> void merge(E[] a, int start, int mid, int end) {
         //临时数组用于存放合并的元素
-        E[] copy = (E[]) new Comparable[end - start + 1];
+        E[] copy = (E[]) new Number[end - start + 1];
 
         int left=start,right=mid+1;
         int c = 0;

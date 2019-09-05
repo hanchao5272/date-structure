@@ -1,5 +1,6 @@
 package pers.hanchao.algorithm;
 
+import pers.hanchao.algorithm.bucket.RadixSort;
 import pers.hanchao.algorithm.insert.DirectInsert;
 import pers.hanchao.algorithm.insert.ShellSort;
 import pers.hanchao.algorithm.merge.MergeSort;
@@ -53,5 +54,10 @@ public class SortDemo {
         new MergeSort().sort(array1);
         new MergeSort().sort(array2);
         new MergeSort().sort(array3);
+
+        //5.radix
+        new RadixSort().sort(array1);
+        new RadixSort().sort(array2);
+        new RadixSort().sort(array3);
     }
 }

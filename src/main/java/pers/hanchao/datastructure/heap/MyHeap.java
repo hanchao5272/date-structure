@@ -17,7 +17,7 @@ import java.util.Objects;
  *
  * @author hanchao
  */
-public class MyHeap<E extends Comparable> {
+public class MyHeap<E extends Number & Comparable> {
 
     /**
      * 数组实现

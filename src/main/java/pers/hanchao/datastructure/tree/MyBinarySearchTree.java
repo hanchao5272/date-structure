@@ -8,7 +8,7 @@ package pers.hanchao.datastructure.tree;
  * 4.删除采用惰性删除，标志位delete.
  * @author hanchao
  */
-public class MyBinarySearchTree<E extends Comparable> {
+public class MyBinarySearchTree<E extends Number & Comparable> {
     /**
      * 树节点
      */

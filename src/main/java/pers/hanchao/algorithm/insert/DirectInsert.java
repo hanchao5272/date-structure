@@ -20,7 +20,7 @@ public class DirectInsert implements Sortable {
      * - 空间 O(1)
      */
     @Override
-    public <E extends Comparable> E[] sort(E[] array) {
+    public <E extends Number & Comparable> E[] sort(E[] array) {
         System.out.println();
         E[] a = SortUtil.copyArrayForTest(array);
         //获取a[i]，将其插入到已排序数组a[0]至a[i]中的合适位置。
@@ -55,7 +55,7 @@ public class DirectInsert implements Sortable {
         return a;
     }
 
-    private <E extends Comparable> void showForTest(E[] a, int i) {
+    private <E extends Number & Comparable> void showForTest(E[] a, int i) {
         System.out.print("第" + i + "次直接插入之后：");
         System.out.print("已排序元素 ");
         for (int k = 0; k <= i; k++) {

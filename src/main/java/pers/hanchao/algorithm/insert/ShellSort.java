@@ -21,7 +21,7 @@ public class ShellSort implements Sortable {
      * - 空间：O(1)
      */
     @Override
-    public <E extends Comparable> E[] sort(E[] array) {
+    public <E extends Number & Comparable> E[] sort(E[] array) {
         E[] a = SortUtil.copyArrayForTest(array);
         System.out.println();
         //以下代码为了测试
@@ -48,7 +48,7 @@ public class ShellSort implements Sortable {
         return a;
     }
 
-    private <E extends Comparable> void showForTest(E[] a, int h, int i) {
+    private <E extends Number & Comparable> void showForTest(E[] a, int h, int i) {
         System.out.print("经过增量=" + h + ",index=" + i + "的希尔排序之后：");
         for (E e : a) {
             System.out.print(e + " ");
@@ -60,7 +60,7 @@ public class ShellSort implements Sortable {
      * 对数组a[i],a[i+h],a[i+2h]进行插入排序
      * 从待排序数组中，拿出第一个的元素，插入到已排序数组的合适位置
      */
-    private <E extends Comparable> void directInsert(E[] a, int start, int h, int size) {
+    private <E extends Number & Comparable> void directInsert(E[] a, int start, int h, int size) {
         //start start+h start+2h
         //start元素无需处理，从start+h开始处理
         for (int i = start + h; i < size; i = i + h) {

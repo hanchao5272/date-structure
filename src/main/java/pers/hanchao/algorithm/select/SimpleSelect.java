@@ -20,7 +20,7 @@ public class SimpleSelect implements Sortable {
      * - 空间：O(1)
      */
     @Override
-    public <E extends Comparable> E[] sort(E[] array) {
+    public <E extends Number & Comparable> E[] sort(E[] array) {
         E[] a = SortUtil.copyArrayForTest(array);
         System.out.println();
         for (int i = 0; i < a.length; i++) {
@@ -47,7 +47,7 @@ public class SimpleSelect implements Sortable {
         return a;
     }
 
-    private <E extends Comparable> void showForTest(E[] a, int i) {
+    private <E extends Number & Comparable> void showForTest(E[] a, int i) {
         System.out.print("第" + (i + 1) + "次简单选择之后：");
         System.out.print("已排序元素 ");
         for (int k = 0; k < i + 1; k++) {

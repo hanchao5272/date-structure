@@ -25,7 +25,7 @@ public class QuickSort implements Sortable {
      * - 空间：O(1)
      */
     @Override
-    public <E extends Comparable> E[] sort(E[] array) {
+    public <E extends Number & Comparable> E[] sort(E[] array) {
         E[] a = SortUtil.copyArrayForTest(array);
         System.out.println();
 
@@ -38,7 +38,7 @@ public class QuickSort implements Sortable {
      * @param start 开始元素index，包括
      * @param end   结束元素index，包括
      */
-    public <E extends Comparable> void quickSort(E[] a, int start, int end) {
+    public <E extends Number & Comparable> void quickSort(E[] a, int start, int end) {
         //终止条件：start=end
         if (start >= end) {
             return;
@@ -54,7 +54,7 @@ public class QuickSort implements Sortable {
         printForTest(a, start, end, mid);
     }
 
-    private <E extends Comparable> void printForTest(E[] a, int start, int end, int mid) {
+    private <E extends Number & Comparable> void printForTest(E[] a, int start, int end, int mid) {
         System.out.print("某次快速分治： [ ");
         for (int i = start; i < mid; i++) {
             System.out.print(a[i] + " ");
@@ -70,7 +70,7 @@ public class QuickSort implements Sortable {
     /**
      * 对a[start]至a[end]元素进行一次快速分治
      */
-    public <E extends Comparable> int division(E[] a, int start, int end) {
+    public <E extends Number & Comparable> int division(E[] a, int start, int end) {
         int left = start;
         int right = end;
         //如果左右游标未相遇，则一直循环
