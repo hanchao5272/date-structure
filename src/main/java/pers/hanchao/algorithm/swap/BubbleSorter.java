@@ -22,6 +22,8 @@ public class BubbleSorter implements Sortable {
      * 复杂度：
      * - 时间：O(n) - O(n2) - O(n2)
      * - 空间：O(1)
+     * <p>
+     * 稳定排序
      */
     @Override
     public <E extends Number & Comparable> E[] sort(E[] array) {

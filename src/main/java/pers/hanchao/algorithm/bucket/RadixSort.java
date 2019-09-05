@@ -20,6 +20,8 @@ public class RadixSort implements Sortable {
      * 复杂度
      * - 时间：O(k*n) O(k*n) O(k*n) k=位数 n=元素个数
      * - 空间：O(n)
+     * <p>
+     * 稳定排序
      */
     @Override
     public <E extends Number & Comparable> E[] sort(E[] array) {

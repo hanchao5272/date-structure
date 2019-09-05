@@ -26,6 +26,8 @@ public class HeapSort implements Sortable {
      * 复杂度
      * - 时间: O(nlog2n) O(nlog2n) O(nlog2n)
      * - 空间：O(1)
+     * <p>
+     * 不稳定排序
      */
     @Override
     public <E extends Number & Comparable> E[] sort(E[] array) {
@@ -43,9 +45,9 @@ public class HeapSort implements Sortable {
                 if (2 * i + 2 <= n - 1) {
                     //当右孩子存在，则从两个孩子中获取较大的孩子
                     bigChildIndex = a[2 * i + 1].compareTo(a[2 * i + 2]) > 0 ? 2 * i + 1 : 2 * i + 2;
-                }else {
+                } else {
                     //当右孩子不存在，则直接获取左孩子
-                    bigChildIndex=2 *i +1;
+                    bigChildIndex = 2 * i + 1;
                 }
                 //如果叶子大于根，则交换
                 if (a[bigChildIndex].compareTo(a[i]) > 0) {

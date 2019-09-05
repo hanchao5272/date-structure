@@ -19,6 +19,8 @@ public class ShellSort implements Sortable {
      * 复杂度
      * - 时间：O(n) O(n1.3) O(n2)
      * - 空间：O(1)
+     * <p>
+     * 不稳定排序
      */
     @Override
     public <E extends Number & Comparable> E[] sort(E[] array) {
@@ -79,8 +81,8 @@ public class ShellSort implements Sortable {
             //将最小元素插入至insertIndex
             if (insertIndex != i) {
                 //将a[min]..a[i]之后的元素右移
-                for (int j = i; j -h >=insertIndex; j = j-h) {
-                    a[j] = a[j-h];
+                for (int j = i; j - h >= insertIndex; j = j - h) {
+                    a[j] = a[j - h];
                 }
                 a[insertIndex] = current;
             }

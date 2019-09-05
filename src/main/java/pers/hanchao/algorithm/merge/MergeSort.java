@@ -18,6 +18,8 @@ public class MergeSort implements Sortable {
      * 复杂度
      * - 时间：O(nlog2n) O(nlog2n) O(nlog2n)
      * - 空间：O(n)
+     * <p>
+     * 稳定排序
      */
     @Override
     public <E extends Number & Comparable> E[] sort(E[] array) {
@@ -49,6 +51,7 @@ public class MergeSort implements Sortable {
         //打印信息for测试
         printForTest(a, start, end, mid);
     }
+
     private <E extends Number & Comparable> void printForTest(E[] a, int start, int end, int mid) {
         System.out.print("某次归并： [ ");
         for (int i = start; i <= mid; i++) {
@@ -69,14 +72,14 @@ public class MergeSort implements Sortable {
         //临时数组用于存放合并的元素
         E[] copy = (E[]) new Number[end - start + 1];
 
-        int left=start,right=mid+1;
+        int left = start, right = mid + 1;
         int c = 0;
         //通过比较，合并两个子数组的交叉元素
-        while(left <=mid && right <=end ){
-            if (a[left].compareTo(a[right]) < 0){
+        while (left <= mid && right <= end) {
+            if (a[left].compareTo(a[right]) < 0) {
                 copy[c] = a[left];
-                left ++;
-            }else {
+                left++;
+            } else {
                 copy[c] = a[right];
                 right++;
             }
@@ -84,13 +87,13 @@ public class MergeSort implements Sortable {
         }
 
         //如果左数组已经合并万，则直接合并右数组
-        if (left == mid + 1){
-            System.arraycopy(a,right,copy,c,end + 1 - right);
-        }else {
-            System.arraycopy(a,left,copy,c,mid + 1 - left);
+        if (left == mid + 1) {
+            System.arraycopy(a, right, copy, c, end + 1 - right);
+        } else {
+            System.arraycopy(a, left, copy, c, mid + 1 - left);
         }
 
         //拷贝回原数组
-        System.arraycopy(copy,0,a,start,copy.length);
+        System.arraycopy(copy, 0, a, start, copy.length);
     }
 }

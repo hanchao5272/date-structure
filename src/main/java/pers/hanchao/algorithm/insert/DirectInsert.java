@@ -14,10 +14,12 @@ public class DirectInsert implements Sortable {
      * 直接插入排序
      * 1.n个元素的数组需要进行n次直接插入
      * 2.每次直接插入就是：从待排序元素中拿出index最小的元素，然后根据大小关系插入到已排序数组的合适位置
-     *
+     * <p>
      * 复杂度
      * - 时间 O(n) O(n2) O(n2)
      * - 空间 O(1)
+     * <p>
+     * 稳定排序
      */
     @Override
     public <E extends Number & Comparable> E[] sort(E[] array) {
@@ -39,9 +41,9 @@ public class DirectInsert implements Sortable {
             }
 
             //如果是自己，无需挪动元素
-            if (insertIndex != i){
+            if (insertIndex != i) {
                 //从insertIndex+1至 i-1 开始后移
-                for (int j = i ; j - 1 >= insertIndex; j--) {
+                for (int j = i; j - 1 >= insertIndex; j--) {
                     a[j] = a[j - 1];
                 }
 
