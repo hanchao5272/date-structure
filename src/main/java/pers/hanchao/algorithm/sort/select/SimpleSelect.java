@@ -1,7 +1,7 @@
-package pers.hanchao.algorithm.select;
+package pers.hanchao.algorithm.sort.select;
 
-import pers.hanchao.algorithm.SortUtil;
-import pers.hanchao.algorithm.Sortable;
+import pers.hanchao.algorithm.sort.SortUtil;
+import pers.hanchao.algorithm.sort.Sortable;
 
 /**
  * <p></P>

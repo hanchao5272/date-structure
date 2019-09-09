@@ -1,13 +1,17 @@
-package pers.hanchao.algorithm;
+package pers.hanchao.algorithm.sort;
 
-import pers.hanchao.algorithm.bucket.RadixSort;
-import pers.hanchao.algorithm.insert.DirectInsert;
-import pers.hanchao.algorithm.insert.ShellSort;
-import pers.hanchao.algorithm.merge.MergeSort;
-import pers.hanchao.algorithm.select.HeapSort;
-import pers.hanchao.algorithm.select.SimpleSelect;
-import pers.hanchao.algorithm.swap.BubbleSorter;
-import pers.hanchao.algorithm.swap.QuickSort;
+import pers.hanchao.algorithm.sort.DirectInsert;
+import pers.hanchao.algorithm.sort.MergeSort;
+import pers.hanchao.algorithm.sort.RadixSort;
+import pers.hanchao.algorithm.sort.ShellSort;
+import pers.hanchao.algorithm.sort.bucket.RadixSort;
+import pers.hanchao.algorithm.sort.insert.DirectInsert;
+import pers.hanchao.algorithm.sort.insert.ShellSort;
+import pers.hanchao.algorithm.sort.merge.MergeSort;
+import pers.hanchao.algorithm.sort.select.HeapSort;
+import pers.hanchao.algorithm.sort.select.SimpleSelect;
+import pers.hanchao.algorithm.sort.swap.BubbleSorter;
+import pers.hanchao.algorithm.sort.swap.QuickSort;
 
 /**
  * <p></P>

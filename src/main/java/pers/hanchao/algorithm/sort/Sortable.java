@@ -1,4 +1,4 @@
-package pers.hanchao.algorithm;
+package pers.hanchao.algorithm.sort;
 
 /**
  * <p>排序</P>

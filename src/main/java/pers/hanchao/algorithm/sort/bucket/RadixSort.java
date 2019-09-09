@@ -1,7 +1,7 @@
-package pers.hanchao.algorithm.bucket;
+package pers.hanchao.algorithm.sort.bucket;
 
-import pers.hanchao.algorithm.SortUtil;
-import pers.hanchao.algorithm.Sortable;
+import pers.hanchao.algorithm.sort.SortUtil;
+import pers.hanchao.algorithm.sort.Sortable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
