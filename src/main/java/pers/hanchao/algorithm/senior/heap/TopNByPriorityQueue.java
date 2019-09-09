@@ -15,8 +15,6 @@ public class TopNByPriorityQueue {
     public static void main(String[] args) {
         int[] a = new int[]{1, 3, 12, 18, 5, 7, 17, 2, 11, 4, 6, 16, 9, 8, 10};
 
-        //1 2 3 4 5
-
         int[] b = topN(a, 5);
         System.out.print("Top Max 5: ");
         for (int i : b) {
