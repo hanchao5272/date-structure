@@ -1,9 +1,5 @@
 package pers.hanchao.algorithm.sort;
 
-import pers.hanchao.algorithm.sort.DirectInsert;
-import pers.hanchao.algorithm.sort.MergeSort;
-import pers.hanchao.algorithm.sort.RadixSort;
-import pers.hanchao.algorithm.sort.ShellSort;
 import pers.hanchao.algorithm.sort.bucket.RadixSort;
 import pers.hanchao.algorithm.sort.insert.DirectInsert;
 import pers.hanchao.algorithm.sort.insert.ShellSort;
